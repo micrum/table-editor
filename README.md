@@ -2,6 +2,8 @@
 
 Table-editor with REST API and CRUD operations. Powered with Ruby on Rails, PostgreSQL and React.js
 
+Check out [DEMO](https://table-editor.herokuapp.com/)
+
 ## Set up and development
 
 Clone repository:
