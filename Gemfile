@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Ruby gem for automatically transforming JSX and using React in Rails
 gem 'react-rails', '~> 1.6.0'
 
+# Ruby web server
+gem 'puma'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
