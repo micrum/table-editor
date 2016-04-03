@@ -40,3 +40,13 @@ Run development server:
 Enjoy:
 
 http://0.0.0.0:3000/
+
+## API
+
+GET	`/fragments` display a list of all fragments
+
+POST `/fragments`	create a new fragment
+
+PUT	`/fragments/:id` update a specific fragment
+
+DELETE `/fragments/:id` delete a specific fragment	
