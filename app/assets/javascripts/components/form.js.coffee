@@ -1,7 +1,7 @@
 @Form = React.createClass
 
   getInitialState: ->
-    datatype: null
+    datatype: 'string'
     value: ''
 
   submitHandler: (e) ->
@@ -14,13 +14,17 @@
   render: ->
     React.DOM.form
       onSubmit: @submitHandler
-      React.DOM.div null,
-        React.DOM.input
-          type: 'text'
-          placeholder: 'Type'
+      React.DOM.div, null
+        React.DOM.select
+          id: 'datatypeSelect'
           name: 'datatype'
-          value: @state.datatype
           onChange: @changeHandler
+          React.DOM.option
+            value: 'string'
+            'String'
+          React.DOM.option
+            value: 'number'
+            'Number'
       React.DOM.div null,
         React.DOM.input
           type: 'text'
@@ -32,11 +36,17 @@
         type: 'submit'
         disabled: !@valid()
         'Create fragment'
+      React.DOM.span
+        "enter a #{@state.datatype}" if !@valid()
 
   changeHandler: (e) ->
     name = e.target.name
     @setState "#{ name }": e.target.value
 
   valid: ->
-    # checks if data present
-    @state.datatype && @state.value
+    # checks if value present and validates a value
+    if @state.value
+      if @state.datatype == 'number'
+        !isNaN(parseFloat(@state.value)) && isFinite(@state.value)
+      else
+        typeof @state.value == 'string' || @state.value instanceof String
