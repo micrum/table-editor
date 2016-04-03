@@ -16,7 +16,6 @@
       onSubmit: @submitHandler
       React.DOM.div, null
         React.DOM.select
-          id: 'datatypeSelect'
           name: 'datatype'
           onChange: @changeHandler
           React.DOM.option
@@ -37,7 +36,7 @@
         disabled: !@valid()
         'Create fragment'
       React.DOM.span
-        "enter a #{@state.datatype}" if !@valid()
+        "Enter a #{@state.datatype}" if !@valid()
 
   changeHandler: (e) ->
     name = e.target.name

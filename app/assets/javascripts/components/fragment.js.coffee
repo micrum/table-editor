@@ -2,6 +2,8 @@
 
   getInitialState: ->
     editable: false
+    datatype: @props.fragment.datatype
+    value: @props.fragment.value
 
   toggleForm: (e) ->
     e.preventDefault()
@@ -40,27 +42,37 @@
         onClick: @toggleForm
         @props.fragment.value
       React.DOM.td null,
-        React.DOM.a
+        React.DOM.button
           onClick: @deleteHandler
           'Delete'
 
   editableFragment: ->
     React.DOM.tr null,
       React.DOM.td null,
-        React.DOM.input
-          type: 'text'
-          defaultValue: @props.fragment.datatype
+        React.DOM.select
           ref: 'datatype'
+          name: 'datatype'
+          defaultValue: @props.fragment.datatype
+          onChange: @changeHandler
+          React.DOM.option
+            value: 'string'
+            'String'
+          React.DOM.option
+            value: 'number'
+            'Number'
       React.DOM.td null,
         React.DOM.input
           type: 'text'
           defaultValue: @props.fragment.value
           ref: 'value'
+          name: 'value'
+          onChange: @changeHandler
       React.DOM.td null,
-        React.DOM.a
+        React.DOM.button
+          disabled: !@valid()
           onClick: @editHandler
           'Update'
-        React.DOM.a
+        React.DOM.button
           onClick: @toggleForm
           'Cancel'
 
@@ -70,3 +82,15 @@
       @editableFragment()
     else
       @readOnlyFragment()
+
+  valid: ->
+    # checks if value present and validates a value
+    if @state.value
+      if @state.datatype == 'number'
+        !isNaN(parseFloat(@state.value)) && isFinite(@state.value)
+      else
+        typeof @state.value == 'string' || @state.value instanceof String
+
+  changeHandler: (e) ->
+    name = e.target.name
+    @setState "#{ name }": e.target.value
