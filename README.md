@@ -50,3 +50,19 @@ POST `/fragments`	create a new fragment
 PUT	`/fragments/:id` update a specific fragment
 
 DELETE `/fragments/:id` delete a specific fragment	
+
+## Application structure
+
+    .
+    |-- app
+    |   |-- assets
+    |   |   |-- javascripts
+    |   |   |   |-- components # React components
+    |   |-- controllers # Rails controllers
+    |   |-- models # Rails models
+    |   |-- views # HTML templates with embedded Ruby
+    |-- config # app config files and initializers
+    |-- db # DB schema and migrations
+    |-- Gemfile # List of Ruby gems
+    |-- Procfile # Heroku dyno scripts
+    |-- README.md
