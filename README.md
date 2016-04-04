@@ -58,6 +58,7 @@ DELETE `/fragments/:id` delete a specific fragment
     |   |-- assets/
     |   |   |-- javascripts/
     |   |   |   |-- components/ # React components
+    |   |   |-- stylesheets/ # CSS
     |   |-- controllers/ # Rails controllers
     |   |-- models/ # Rails models
     |   |-- views/ # HTML templates with embedded Ruby

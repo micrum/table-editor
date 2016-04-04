@@ -12,31 +12,36 @@
     , 'JSON'
 
   render: ->
-    React.DOM.form
-      onSubmit: @submitHandler
-      React.DOM.div, null
-        React.DOM.select
-          name: 'datatype'
-          onChange: @changeHandler
-          React.DOM.option
-            value: 'string'
-            'String'
-          React.DOM.option
-            value: 'number'
-            'Number'
-      React.DOM.div null,
-        React.DOM.input
-          type: 'text'
-          placeholder: 'Value'
-          name: 'value'
-          value: @state.value
-          onChange: @changeHandler
-      React.DOM.button
-        type: 'submit'
-        disabled: !@valid()
-        'Create fragment'
-      React.DOM.span
-        "Enter a #{@state.datatype}" if !@valid()
+    React.DOM.div
+      className: 'new-fragment'
+      React.DOM.h2 null,
+        'Add fragment'
+      React.DOM.form
+        onSubmit: @submitHandler
+        React.DOM.div, null
+          React.DOM.select
+            name: 'datatype'
+            onChange: @changeHandler
+            React.DOM.option
+              value: 'string'
+              'String'
+            React.DOM.option
+              value: 'number'
+              'Number'
+        React.DOM.div null,
+          React.DOM.input
+            type: 'text'
+            placeholder: 'Value'
+            name: 'value'
+            value: @state.value
+            onChange: @changeHandler
+        React.DOM.button
+          type: 'submit'
+          disabled: !@valid()
+          'Create fragment'
+        React.DOM.span
+          className: 'invalid'
+          "Enter a #{@state.datatype}" if !@valid()
 
   changeHandler: (e) ->
     name = e.target.name
